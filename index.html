@@ -1,0 +1,97 @@
+<!doctype html>
+
+<html>
+
+	<head>
+		<title>Прости..</title>
+		<meta charset='utf-8' />
+		<style type='text/css'>
+			* {
+				margin : 0;
+				padding : 0;
+			}
+
+			html, body, #main {
+				height : 100%;
+				background-color : black;
+			}
+
+			#main {
+				background-image : url(res/rain.gif);
+				background-repeat : no-repeat;
+				background-size : cover;
+				text-align : center;
+				overflow : hidden;
+			}
+
+			#wnd {
+				display : inline-block;
+				margin-top : 100px;
+				width : 500px;
+				background : url(res/transp.png);
+				border : transparent 3px solid;
+				border-radius : 20px;
+				padding : 20px;
+				text-align : center;
+			}
+
+			#wnd #msg {
+				color: rgb(0, 43, 101);
+				font-weight: bold;
+				font-size: 1.5em;
+			}
+
+			#wnd #cat {
+				margin-top : 20px;
+				width : 300px;
+			}
+		</style>
+		<script type='text/javascript'>
+				window.onload = function() {
+						// Затемнение / осветление изображения
+						var main = document.getElementById('main');
+						main.style.opacity = '1.0';
+						opacityD = 0.05;
+						isUpOpacity = false;
+						main.timer = setInterval(function() {
+							var opacity = +main.style.opacity;
+							console.log('main.style.opacity: ' + opacity);
+							console.log('isUpOpacity: ' + isUpOpacity);
+
+							if (isUpOpacity) {
+								opacity += opacityD;
+							} else {
+								opacity -= opacityD;
+							}
+
+							if (opacity < 0.6) {
+								isUpOpacity = true;
+							} else if (opacity >= 1.0) {
+								isUpOpacity = false;
+							}
+
+							main.style.opacity = opacity;
+						}, 200);
+				};
+		</script>
+	</head>
+
+	<body>
+		<div id='main'>
+			<audio src='res/bg_music.mp3' autoplay loop></audio>
+			<div id="wnd">
+				<div id="msg">
+					Прости, своими словами
+					я сделал больно
+					и ты разочаровалась во мне,
+					очень жалею об этом
+					и очень хочу
+					всё наладить,
+					мне плохо без твоей улыбки...
+				</div>
+				<img id='cat' src='res\cat.png' alt='Cat' />
+			</div>
+		</div>
+	</body>
+
+</html>
